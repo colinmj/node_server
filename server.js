@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const port = process.env.PORT || 3000;
 
 var app = express();
 
@@ -33,16 +34,6 @@ hbs.registerHelper('screamIt', text => {
   return text.toUpperCase();
 });
 
-//app takes 2 arguments, the url, and then the function
-
-// app.get('/', (req, res) => {
-//   // res.send('<h1>Hello Express</h1>');
-//   res.send({
-//     name: 'Colin',
-//     likes: ['code', 'beef', 'guitars']
-//   });
-// });
-
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
     pageTitle: 'About Page'
@@ -62,6 +53,6 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('server is up and running');
 });
